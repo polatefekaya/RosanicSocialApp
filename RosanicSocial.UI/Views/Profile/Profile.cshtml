@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+  .header { background-color: #f8f9fa; padding: 20px; }
+  .header h1 { color: #007bff; text-align: left; margin-bottom: 0; }
+  .summary { padding: 15px; background-color: #e9ecef; border-radius: 5px; margin-bottom: 20px; font-size: 0.9rem; }
+  .summary ul { padding-left: 20px; }
+  .summary li { list-style-type: circle; }
+  .team-button { margin-bottom: 10px; }
+  .standings { overflow-x: auto; }
+  .search-bar { margin-bottom: 20px; }
+</style>
+</head>
+<body>
+   
+    <div class="container-fluid">
+        <div class="container" style="width: 100%; padding: 1rem 0 1rem 0;">
+            
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                </ol>
+            </nav>
+            
+            
+            <div class="table-group-divider opacity-25 mb-4 mt-3"></div>
+            
+            <div class="container my-4">
+  <div class="row align-items-start">
+    <!-- Profil Fotoğrafı -->
+    <div class="col-4 col-sm-5 col-md-4 col-lg-3 mb-3">
+      <div class="card" style="min-width:5.8rem; max-width: 8rem; max-height: 8rem; aspect-ratio: 1/1; overflow: hidden; object-position: center;">
+        <img src="pp.jpg" class="card-img-top img-fluid" alt="Profil Fotoğrafı" style="height: 100%; object-fit: cover; object-position: center;">
+      </div>
+    </div>
+    <!-- Kullanıcı Bilgileri -->
+    <div class="col-8 col-sm-7 col-md-8 col-lg-9">
+      <h1 class="mb-3">@User.Identity?.Name</h1>
+      <div class="row">
+        <div class="col-3 col-md-3 mb-3">
+          <h6 class="fw-bold">3</h6>
+          <p class="small">Posts</p>
+        </div>
+        <div class="col-4 col-md-3 mb-3">
+          <h6 class="fw-bold">47</h6>
+          <p class="small">Followers</p>
+        </div>
+        <div class="col-4 col-md-3 mb-3">
+          <h6 class="fw-bold">120</h6>
+          <p class="small">Following</p>
+        </div>
+      </div>
+      
+    </div>
+    <div class="col-12">
+      <div class="card text-bg-dark mb-3 overflow-hidden" style="width: 100%;">
+        <div class="card-img-overlay" style="position: relative;">
+          <img src="pp.jpg" alt="..." style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: brightness(40%) contrast(110%) blur(7px); z-index: 0;">
+          <p class="card-text" style="text-shadow: 0 0 10px black; position: relative; z-index: 1;">Burası benim biyografi alanım. Kendim hakkımda ya da sporlar hakkında istediğim şeyi yazabilirim buraya.</p>
+        </div>
+      </div>
+      
+      
+      
+      
+    </div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-6 col-md-3 mb-3">
+              <h6 class="fw-bold">Beşiktaş</h6>
+              <p class="small">Team</p>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <h6 class="fw-bold">Follower</h6>
+              <p class="small">47</p>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <h6 class="fw-bold">Following</h6>
+              <p class="small">120</p>
+            </div>
+            <div class="col-6 col-md-3 mb-3">
+              <h6 class="fw-bold">Football</h6>
+              <p class="small">Sport</p>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              <div class="container mb-5">
+                  <div class="table-group-divider opacity-25"></div>
+              </div>
+              
+            
+              
+              <div class="container mb-5">
+                  <h3>Sport Roses</h3>
+                @{
+                    for(int i = 0; i<10; i++) {
+                      <div class="table-group-divider opacity-0"></div>
+                      <div class="card" style="border-width: 0px; max-width: 540px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.8);">
+                        <div class="row no-gutters">
+                          <div class="col-1 col-sm-1 col-md-1 pt-4 me-4 me-sm-4">
+                            <div class="card" style="min-width: 2.5rem; max-width: 2.5rem; max-height: 2.5rem; aspect-ratio: 1/1; overflow: hidden;">
+                              <img src="pp.jpg" class="card-img-top img-fluid" alt="Profil Resmi" style="height: 100%; object-fit: cover; object-position: center;">
+                            </div>
+                          </div>
+                          <div class="col-8 col-sm-10 col-md-10 pe-4">
+                            <div class="card-body m-0 p-0 pt-3">
+                              <div class="d-flex justify-content-start align-items-center mb-2">
+                                <h5 class="card-title fw-semibold m-0" style="font-size:medium;">
+                                  <span class="fw-medium opacity-50">#</span>polatsfekaya
+                                </h5>
+                                <p class="ms-3 card-text m-0" style="opacity: 0.5;">
+                                  <small class="text-muted">Tweet tarihi</small>
+                                </p>
+                              </div>
+                              <p class="card-text">Bu, tweet'in içeriği olacak metin alanıdır. Buraya tweet metnini yazabilirsiniz.</p>
+                            </div>
+                        
+                        
+                          </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0 mb-0 pb-0">
+                          <div class="d-flex justify-content-around mb-0 pb-0">
+                            <button type="button" class="btn d-flex align-items-baseline btn-sm opacity-75 mt-1">
+                              <p class="opacity-50">@Random.Shared.Next(200,999)</p>
+                              <i class="fa-regular fa-heart ms-2"></i>
+                            </button>
+                            <button type="button" class="btn d-flex align-items-baseline btn-sm opacity-75 mt-1">
+                                        <p class="opacity-50">@Random.Shared.Next(100, 400)</p>
+                              <i class="fa-solid fa-repeat ms-2"></i>
+                            </button>
+                            <button type="button" class="btn d-flex align-items-baseline btn-sm opacity-75 mt-1">
+                                        <p class="opacity-50">@Random.Shared.Next(50, 150)</p>
+                              <i class="fa-regular fa-comment ms-2"></i>
+                            </button>
+                            <button type="button" class="btn d-flex align-items-baseline btn-sm opacity-75 mt-1">
+                                        <p class="opacity-50">@Random.Shared.Next(15, 75)</p>
+                              <i class="fa-solid fa-share ms-2"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>      
+                    }
+                }
+                  
+                <div class="table-group-divider opacity-25 mb-5"></div>
+            
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/d595045afe.js" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Search bar functionality
+  document.getElementById('teamSearch').addEventListener('keyup', function() {
+    var searchValue = this.value.toLowerCase();
+    var teamButtons = document.querySelectorAll('#teamList .team-button');
+    
+    teamButtons.forEach(function(button) {
+      var teamName = button.textContent.toLowerCase();
+      if (teamName.includes(searchValue)) {
+        button.style.display = '';
+      } else {
+        button.style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>

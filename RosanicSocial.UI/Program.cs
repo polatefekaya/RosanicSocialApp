@@ -29,7 +29,7 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
 
 var app = builder.Build();
 
-
+app.UseAuthentication();
 app.UseRouting();
 app.UseStaticFiles();
 app.MapControllers();

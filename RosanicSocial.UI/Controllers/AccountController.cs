@@ -7,9 +7,10 @@ namespace RosanicSocial.UI.Controllers {
     [Route("[action]")]
     public class AccountController : Controller {
         private readonly UserManager<ApplicationUser> _userManager;
-
-        public AccountController(UserManager<ApplicationUser> userManager) {
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public IActionResult Index() {
@@ -37,6 +38,9 @@ namespace RosanicSocial.UI.Controllers {
 
             IdentityResult result = await _userManager.CreateAsync(user);
             if (result.Succeeded) {
+
+                await _signInManager.SignInAsync(user, isPersistent: false);
+
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
 

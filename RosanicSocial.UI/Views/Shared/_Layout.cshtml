@@ -90,14 +90,18 @@
                 <a class="nav-link" href="register">Register</a>
               </li>
             </ul>
-            <ul class="navbar-nav ms-auto ms-lg-0 me-lg-3">
-              <li class="nav-item d-flex align-items-center">
-                <div class="card" style="min-width: 1.5rem; max-width: 1.5rem; max-height: 1.5rem; aspect-ratio: 1/1; overflow: hidden; object-position: center;">
-                  <img src="pp.jpg" class="card-img-top img-fluid" alt="Profil Fotoğrafı" style="height: 100%; object-fit: cover; object-position: center;">
-                </div>
-                <a class="nav-link ms-2 ms-lg-1" href="profile">Profile</a>
-              </li>
-            </ul>
+                @{
+                    if (User.Identity is not null) {
+                        <ul class="navbar-nav ms-auto ms-lg-0 me-lg-3">
+                          <li class="nav-item d-flex align-items-center">
+                            <div class="card" style="min-width: 1.5rem; max-width: 1.5rem; max-height: 1.5rem; aspect-ratio: 1/1; overflow: hidden; object-position: center;">
+                              <img src="pp.jpg" class="card-img-top img-fluid" alt="Profil Fotoğrafı" style="height: 100%; object-fit: cover; object-position: center;">
+                            </div>
+                              <a class="nav-link ms-2 ms-lg-1" href="profile">@User.Identity.Name</a>
+                          </li>
+                        </ul>
+                    }
+                }
           </div>
         </div>
       </nav>
