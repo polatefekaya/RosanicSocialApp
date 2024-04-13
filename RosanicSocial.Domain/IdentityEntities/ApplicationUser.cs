@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace RosanicSocial.Domain.IdentityEntities {
     public class ApplicationUser : IdentityUser<Guid> {
-        public string? PersonName { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set;}
     }
 }
