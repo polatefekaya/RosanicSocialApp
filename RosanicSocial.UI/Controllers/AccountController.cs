@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RosanicSocial.Domain.DTO;
 using RosanicSocial.Domain.IdentityEntities;
@@ -68,6 +69,14 @@ namespace RosanicSocial.UI.Controllers {
         public async Task<IActionResult> Logout() {
             await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> IsUsernameInUse(string username) {
+            ApplicationUser? user = await _userManager.FindByNameAsync(username);
+
+            return Json(user is null);
         }
     }
 }

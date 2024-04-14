@@ -41,6 +41,7 @@
                                                 <span class="input-group-text opacity-50"><i class="fa fa-at"></i></span>
                                                 <input asp-for="UserName" type="text" class="form-control" id="userName" placeholder="Type your username" required>
                                             </div>
+                                            <span class="opacity-75" style="color: red" asp-validation-for="UserName"></span>
                                         </div>
                                         <div class="form-group mb-4">
                                             <p class="text-muted mt-2 mb-1">E-mail</p>
@@ -60,15 +61,17 @@
                                         <button type="submit" class="btn btn-primary">Continue</button>
                                         <div asp-validation-summary="All"></div>
 
-                                        @if(ViewBag.Errors is not null) {
+                                        @if (ViewBag.Errors is not null) {
                                             <div class="card text-bg-danger">
                                                 <div class="card-header">
                                                     <h6>There are some errors!</h6>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        @foreach(string error in ViewBag.Errors) {
-                                                            <div class="col"><i class="fa-solid fa-warning"></i>@error</div>
+                                                        @foreach (string error in ViewBag.Errors) {
+                                                            <div class="col"><i class="fa-solid fa-warning"></i>
+                                                                <p class="opacity-75" style="color: red">@error</p>
+                                                                </div>
                                                         }
                                                     </div>
                                                 </div>
@@ -103,4 +106,7 @@
         </div>
         <!-- Row -->
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js" integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js" integrity="sha512-xq+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
