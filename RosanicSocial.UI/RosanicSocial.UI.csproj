@@ -8,7 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Middleware\" />
-    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\src\Views\Home\sample.js" />
   </ItemGroup>
 
   <ItemGroup>
