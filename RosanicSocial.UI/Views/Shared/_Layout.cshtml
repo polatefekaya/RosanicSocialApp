@@ -58,21 +58,24 @@
 <body>
     <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">WildRose Sports</a>
+          <a class="navbar-brand" href="/">WildSports</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link"  href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
+                    @if (String.Equals(ViewBag.CurrentUrl, "~/Home/Index")) {
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                    } else {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>                        
+                    }
+
+                    
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown link
@@ -83,25 +86,45 @@
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="login">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="register">Register</a>
-              </li>
+
             </ul>
-                @{
-                    if (User.Identity is not null) {
                         <ul class="navbar-nav ms-auto ms-lg-0 me-lg-3">
-                          <li class="nav-item d-flex align-items-center">
+                            <li class="nav-item d-flex align-items-center">
+
+                        @if (User.Identity is not null && User.Identity.IsAuthenticated) {
+                            @if (String.Equals(ViewBag.CurrentUrl, "~/Profile/Profile")) {
+                                <li>
+                                <a asp-controller="Account" asp-action="Logout" class="nav-link">Logout</a>
+                                </li>
+                            } else {
                             <div class="card" style="min-width: 1.5rem; max-width: 1.5rem; max-height: 1.5rem; aspect-ratio: 1/1; overflow: hidden; object-position: center;">
-                              <img src="pp.jpg" class="card-img-top img-fluid" alt="Profil Fotoğrafı" style="height: 100%; object-fit: cover; object-position: center;">
+                               <img src="pp.jpg" class="card-img-top img-fluid" alt="Profil Fotoğrafı" style="height: 100%; object-fit: cover; object-position: center;">
                             </div>
-                              <a class="nav-link ms-2 ms-lg-1" href="profile">@User.Identity.Name</a>
+                            <a class="nav-link ms-2 ms-lg-1" href="profile">@User.Identity.Name</a>
+                            }
+                        } else {
+                            @if (String.Equals(ViewBag.CurrentUrl, "~/Account/Login")) {
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="login">Login</a>
+                            </li>
+                            } else {
+                            <li class="nav-item">
+                                <a class="nav-link" href="login">Login</a>
+                            </li>
+                            }
+                            @if (String.Equals(ViewBag.CurrentUrl, "~/Account/Register")) {
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="register">Register</a>
+                            </li>
+                            } else {
+                            <li class="nav-item">
+                                <a class="nav-link" href="register">Register</a>
+                            </li>
+                            }
+                        }
+
                           </li>
-                        </ul>
-                    }
-                }
+                        </ul>                                    
           </div>
         </div>
       </nav>

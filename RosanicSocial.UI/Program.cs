@@ -21,7 +21,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
 
-builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
+    options.Password.RequiredLength = 8;
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredUniqueChars = 5;
+    options.Password.RequireNonAlphanumeric = false;
+
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+})
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders()
     .AddUserStore<UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, Guid>>()
@@ -29,8 +39,8 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
 
 var app = builder.Build();
 
-app.UseAuthentication();
 app.UseRouting();
+app.UseAuthentication();
 app.UseStaticFiles();
 app.MapControllers();
 

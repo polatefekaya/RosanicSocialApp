@@ -1,4 +1,8 @@
-﻿<body>
+﻿@{
+    ViewBag.CurrentUrl = "~/Account/Login";
+}
+@model RosanicSocial.Domain.DTO.LoginDTO
+<body>
     <div id="main-wrapper" class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-xl-10">
@@ -14,22 +18,39 @@
                                     <h6 class="h5 mb-0">Welcome back to <span class="text-primary">WildSports</span></h6>
                                     <p class="text-muted mt-2 mb-5">You can use your existing <span class="text-black">WildRose</span> account to login.</p>
 
-                                    <form>
+                                    <form asp-controller="Account" asp-action="Login" method="post">
                                         <div class="form-group mb-4">
-                                            <p class="text-muted mt-2 mb-1">Username or Email</p>
+                                            <p class="text-muted mt-2 mb-1">Username</p>
                                             <div class="input-group">
                                                 <span class="input-group-text opacity-50"><i class="fa fa-user"></i></span>
-                                                <input type="text" class="form-control" id="usernameOrEmail" placeholder="Type your username or email" required>
+                                                <input asp-for="Username" type="text" class="form-control" id="usernameOrEmail" placeholder="Type your username" required>
                                             </div>
                                         </div>
                                         <div class="form-group mb-5">
                                             <p class="text-muted mt-2 mb-1">Password</p>
                                             <div class="input-group">
                                                 <span class="input-group-text opacity-50"><i class="fa fa-lock"></i></span>
-                                                <input type="password" class="form-control" id="password" placeholder="Type your password" required>
+                                                <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Type your password" required>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Login</button>
+
+                                        <div asp-validation-summary="All"></div>
+
+                                        @if (ViewBag.Errors is not null) {
+                                            <div class="card text-bg-danger">
+                                                <div class="card-header">
+                                                    <h6>There are some errors!</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        @foreach (string error in ViewBag.Errors) {
+                                                            <div class="col"><i class="fa-solid fa-warning"></i>@error</div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
                                     </form>
                                 </div>
                             </div>

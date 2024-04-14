@@ -16,9 +16,24 @@ namespace RosanicSocial.UI.Controllers {
         public IActionResult Index() {
             return View();
         }
+        [HttpGet]
         public IActionResult Login() {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginDTO loginDTO) {
+            if (!ModelState.IsValid) {
+                ViewBag.Errors = ModelState.Values.SelectMany(x => x.Errors).Select(temp => temp.ErrorMessage);
+                return View(loginDTO);
+            }
+            var result = await _signInManager.PasswordSignInAsync(loginDTO.Username, loginDTO.Password, isPersistent: false, lockoutOnFailure: true);
+            if (result.Succeeded) {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+            ModelState.AddModelError("Login", "Invalid username or password");
+            return View(loginDTO);
+        }
+
         [HttpGet]
         public IActionResult Register() {
             return View();
@@ -36,7 +51,7 @@ namespace RosanicSocial.UI.Controllers {
                 UserName = registerDTO.UserName
             };
 
-            IdentityResult result = await _userManager.CreateAsync(user);
+            IdentityResult result = await _userManager.CreateAsync(user, registerDTO.Password);
             if (result.Succeeded) {
 
                 await _signInManager.SignInAsync(user, isPersistent: false);
@@ -48,6 +63,11 @@ namespace RosanicSocial.UI.Controllers {
                 ModelState.AddModelError("Error", error.Description);
             }
             return View(registerDTO);
+        }
+
+        public async Task<IActionResult> Logout() {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
 }

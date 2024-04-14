@@ -1,6 +1,7 @@
 ﻿@model RosanicSocial.Domain.DTO.RegisterDTO
 @{
     ViewBag.Title = "Register";
+    ViewBag.CurrentUrl = "~/Account/Register";
 }
 
 <body>
@@ -58,6 +59,21 @@
 
                                         <button type="submit" class="btn btn-primary">Continue</button>
                                         <div asp-validation-summary="All"></div>
+
+                                        @if(ViewBag.Errors is not null) {
+                                            <div class="card text-bg-danger">
+                                                <div class="card-header">
+                                                    <h6>There are some errors!</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        @foreach(string error in ViewBag.Errors) {
+                                                            <div class="col"><i class="fa-solid fa-warning"></i>@error</div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
                                     </form>
                                 </div>
                             </div>
