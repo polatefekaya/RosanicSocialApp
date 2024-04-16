@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -37,11 +38,20 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
     .AddUserStore<UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, Guid>>()
     .AddRoleStore<RoleStore<ApplicationRole, ApplicationDbContext, Guid>>();
 
+builder.Services.AddAuthorization(options => {
+    options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+});
+builder.Services.ConfigureApplicationCookie(options => {
+    options.LoginPath = "/login";
+});
+
 var app = builder.Build();
+
+app.UseStaticFiles();
 
 app.UseRouting();
 app.UseAuthentication();
-app.UseStaticFiles();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

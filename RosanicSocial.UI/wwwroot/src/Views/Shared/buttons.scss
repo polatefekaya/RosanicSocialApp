@@ -1,0 +1,27 @@
+﻿.btn-bd-secondary {
+    --bs-btn-font-weight: 500;
+    --bs-btn-color: #252525b9;
+    --bs-btn-bg: rgba(0, 0, 0, 0);
+    --bs-btn-border-color: rgba(150, 150, 150, 0.644);
+    --bs-btn-hover-color: rgb(18, 121, 253);
+    --bs-btn-hover-bg: rgba(0, 0, 0, 0);
+    --bs-btn-hover-border-color: rgb(18, 121, 253);
+    --bs-btn-focus-shadow-rgb: rgb(18, 121, 253);
+    --bs-btn-active-color: rgb(18, 121, 253);
+    --bs-btn-active-bg: rgba(0, 0, 0, 0);
+    --bs-btn-active-border-color: rgb(18, 121, 253);
+}
+
+.btn-bd-primary {
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: rgb(18, 121, 253);
+    --bs-btn-bg: rgba(18, 120, 253, 0.041);
+    --bs-btn-border-color: rgba(18, 120, 253, 0.863);
+    --bs-btn-hover-color: rgb(14, 82, 172);
+    --bs-btn-hover-bg: rgba(0, 0, 0, 0);
+    --bs-btn-hover-border-color: rgb(14, 82, 172);
+    --bs-btn-focus-shadow-rgb: rgb(14, 82, 172);
+    --bs-btn-active-color: rgb(14, 82, 172);
+    --bs-btn-active-bg: rgba(0, 0, 0, 0);
+    --bs-btn-active-border-color: rgb(14, 82, 172);
+}

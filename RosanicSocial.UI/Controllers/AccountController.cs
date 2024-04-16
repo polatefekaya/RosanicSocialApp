@@ -6,6 +6,7 @@ using RosanicSocial.Domain.IdentityEntities;
 
 namespace RosanicSocial.UI.Controllers {
     [Route("[action]")]
+    [AllowAnonymous]
     public class AccountController : Controller {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -22,13 +23,16 @@ namespace RosanicSocial.UI.Controllers {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginDTO loginDTO) {
+        public async Task<IActionResult> Login(LoginDTO loginDTO, string? ReturnUrl) {
             if (!ModelState.IsValid) {
                 ViewBag.Errors = ModelState.Values.SelectMany(x => x.Errors).Select(temp => temp.ErrorMessage);
                 return View(loginDTO);
             }
             var result = await _signInManager.PasswordSignInAsync(loginDTO.Username, loginDTO.Password, isPersistent: false, lockoutOnFailure: true);
             if (result.Succeeded) {
+                if (!string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl)) {
+                    return LocalRedirect(ReturnUrl);
+                }
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
             ModelState.AddModelError("Login", "Invalid username or password");
