@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 
 namespace RosanicSocial.Infrastructure.DatabaseContext {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid> {
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int> {
         public ApplicationDbContext(DbContextOptions options) : base(options) { 
         
         }

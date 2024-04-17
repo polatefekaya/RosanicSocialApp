@@ -53,7 +53,7 @@ namespace RosanicSocial.UI.Controllers {
                 Email = registerDTO.Email,
                 FirstName = registerDTO.FirstName,
                 LastName = registerDTO.LastName,
-                UserName = registerDTO.UserName
+                UserName = registerDTO.UserName,
             };
 
             IdentityResult result = await _userManager.CreateAsync(user, registerDTO.Password);

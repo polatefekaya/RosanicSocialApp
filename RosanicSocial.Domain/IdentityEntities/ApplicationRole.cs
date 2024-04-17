@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 namespace RosanicSocial.Domain.IdentityEntities {
-    public class ApplicationRole : IdentityRole<Guid> {
+    public class ApplicationRole : IdentityRole<int> {
 
     }
 }
